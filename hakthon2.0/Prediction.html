@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction | AI Crop Yield</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Handles form submission and displays mock result
+        function showPrediction(event) {
+            event.preventDefault();
+            // Collect form data for future backend integration
+            const crop = document.getElementById('crop').value;
+            const area = document.getElementById('area').value;
+            const soil = document.getElementById('soil').value;
+            const rain = document.getElementById('rain').value;
+            const fertilizer = document.getElementById('fertilizer').value;
+            // Placeholder for backend call
+            // TODO: Replace with real API call
+            document.getElementById('prediction-result').innerHTML =
+                `<div class="result card" style="max-width:400px;margin:2em auto 0 auto;">
+                    <strong>Estimated Yield:</strong> 3.2 tons per hectare<br>
+                    <small>(This is a mock result. Connect to backend for real prediction.)</small>
+                    <div style='margin-top:1em;'>
+                        <img src="https://quickchart.io/chart?c={type:'bar',data:{labels:['Your Field','Avg. Region'],datasets:[{label:'Yield',data:[3.2,2.7],backgroundColor:['#52b788','#b7e4c7']}]} }" alt="Mock Chart" style="width:100%;max-width:320px;border-radius:8px;box-shadow:0 2px 8px #b7e4c7;">
+                    </div>
+                </div>`;
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="Home.html" class="logo"><span>🌾</span>AI Crop Yield</a>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Prediction.html" class="active">Prediction</a></li>
+                <!-- Optimization page removed -->
+                <li><a href="ChatBot.html">Chat Bot</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <h1>Prediction</h1>
+        <form id="prediction-form" onsubmit="showPrediction(event)">
+            <fieldset class="card">
+                <legend><span class="icon">🌱</span> Crop Info</legend>
+                <label for="crop"><span class="icon">🌾</span> Crop Type</label>
+                <input type="text" id="crop" name="crop" placeholder="e.g. Wheat" required>
+                <label for="area"><span class="icon">📏</span> Area (hectares)</label>
+                <input type="number" id="area" name="area" placeholder="e.g. 2.5" required>
+            </fieldset>
+            <fieldset class="card">
+                <legend><span class="icon">🧪</span> Soil Info</legend>
+                <label for="soil"><span class="icon">🧪</span> Soil Quality</label>
+                <input type="text" id="soil" name="soil" placeholder="e.g. Loamy" required>
+            </fieldset>
+            <fieldset class="card">
+                <legend><span class="icon">☁️</span> Weather & Inputs</legend>
+                <label for="rain"><span class="icon">☔</span> Expected Rainfall (mm)</label>
+                <input type="number" id="rain" name="rain" placeholder="e.g. 300" required>
+                <label for="fertilizer"><span class="icon">🌿</span> Fertilizer Used (kg)</label>
+                <input type="number" id="fertilizer" name="fertilizer" placeholder="e.g. 50" required>
+            </fieldset>
+            <button type="submit" class="button">Predict Yield</button>
+        </form>
+        <div id="prediction-result"></div>
+    </main>
+    <footer>
+        &copy; 2025 AI Crop Yield | <a href="Home.html">Home</a>
+    </footer>
+</body>
+</html>
